@@ -4,6 +4,7 @@ const problemcount = 15;
 var sorthelper = [];
 var output = [];
 var numteams = teamnames.length;
+var maxresponses = 25;
 
 function formSubmitted(e) {
   putInContact(e.namedValues);
@@ -48,7 +49,7 @@ function putInContact(info) {
     var upper_bound = row[3];
     var team_name = row[4];
 
-    if (scoreoutput[team_name][problemcount+1] == 25)
+    if (scoreoutput[team_name][problemcount+1] == maxresponses)
     {
       continue;
     }
