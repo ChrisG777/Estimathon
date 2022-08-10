@@ -31,6 +31,6 @@ Now, here are the steps you need to follow to successfully create your own estim
 
 Usage Tips
 1. Scientific notation is possible through the google form: type it like 1.5e+10 for 1.5 * 10^10
-2. The Scoring system is ![Estimathon Scoring](https://i.ibb.co/Cn5Gs85/estimathon-score.png =x250)), where bad refers to all the problems with wrong answer submissions and good refers to the problems with right answer submissions. To change this, you'd need to go into the code (control F for 100). 
+2. The Scoring system is <img src="[http://....jpg](https://i.ibb.co/Cn5Gs85/estimathon-score.png)" width="200" height="100" />where bad refers to all the problems with wrong answer submissions and good refers to the problems with right answer submissions. To change this, you'd need to go into the code (control F for 100). 
 3. Inevitably, some teams will forget how to do scientific notation properly. If there's a mistake, you can change it live on the Form responses page directly (no need to go through the google form) and it will reflect on the leaderboard the next time someone makes a submission. 
 4. For responses where the lower bound is larger than the upper bound or there's a negative number or 0 or the numbers are just too big, the code won't count the response. 
