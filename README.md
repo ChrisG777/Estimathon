@@ -5,7 +5,7 @@ The most fun round of any math contest. Trust me.
 
 The Estimathon round is a series of estimation questions with a twist: teams get live feedback on their responses, and have more than one chance to get some of the questions right. Here's an extract of the rules for the 2022 Summer Mission Math Tournament (hosted by MSJ Math Club :D)
 
-Contest Format
+## Contest Format
 * Team round
 * 15 Fermi-style estimation questions
 * 45 minutes
@@ -17,7 +17,7 @@ Here is an example of what the scoreboard looks like:
 ![Sample Estimathon Scoreboard](https://i.ibb.co/PwpQ9zP/Estimathon-Scoreboard.png)
 
 
-Now, here are the steps you need to follow to successfully create your own estimathon leaderboard.
+## Now, here are the steps you need to follow to successfully create your own estimathon leaderboard.
 
 1. Make a google form with four required questions: 1. team name (multiple choice, put all the teams that will be participating as options) 2. Problem number 3. Lower Bound 4. Upper Bound 
 ![Step 1](https://i.ibb.co/MRX400M/Estimathon-step-1.png)
@@ -29,7 +29,7 @@ Now, here are the steps you need to follow to successfully create your own estim
 6. Go back to the code editor. At the very top, replace the team names like "3 idiots" with the team names for your contest, verbatim. Replace the answers with the answers to the problems from your contest in order, but DON'T CHANGE THE 0: that's there because arrays are 0-indexed, so start from the second number (8.87e13). Change the problemcount to the number of problems on your contest. Change maxresponses to what you want the maximum number of responses per team to be. 
 7. At the top menu, click formSubmitted with a triangle next to it and change it to putInContact. Then, press Run. You should see now your leaderboard setup. You can close the apps script now: your leaderboard is ready to use. Just give the google form out for teams to start submitting their answers. 
 
-Usage Tips
+## Usage Tips
 1. Scientific notation is possible through the google form: type it like 1.5e+10 for 1.5 * 10^10
 2. The Scoring system is ![Estimathon Scoring](https://i.ibb.co/Cn5Gs85/estimathon-score.png) where bad refers to all the problems with wrong answer submissions and good refers to the problems with right answer submissions. To change this, you'd need to go into the code (control F for 100). 
 3. Inevitably, some teams will forget how to do scientific notation properly. If there's a mistake, you can change it live on the Form responses page directly (no need to go through the google form) and it will reflect on the leaderboard the next time someone makes a submission. 
