@@ -1,10 +1,8 @@
 var teamnames = ["3 idiots", "pie", "lemon", "Genshin Is better than arknights", "Team EEK", "Me, Myself, and I", "You're a math wizard Harry", "Underestimated", "zam s fanclub", "L", "W"];
 var answers = [0, 8.87e13, 30552, 8877600, 4.31e10, 29650, 900000, 26055460, 18450000000, 4580000, 171476, 312000, 9.2e10, 29.046, 46000000000, 264000000]
-const problemcount = 15;
 var sorthelper = [];
 var output = [];
 var numteams = teamnames.length;
-var maxresponses = 25;
 
 function formSubmitted(e) {
   putInContact(e.namedValues);
@@ -20,6 +18,7 @@ function putInContact(info) {
   /*
   we should have a dictionary of arrays each array's key is the team name, and the array is 17 elements which are the next 17 cells: their current answers to the first 15 questions, their score, then their submission count
   */
+  var problemcount=answers.length-1;
   var scoreoutput = {};
   for (const team of teamnames)
   {
@@ -49,7 +48,7 @@ function putInContact(info) {
     var upper_bound = row[3];
     var team_name = row[4];
 
-    if (scoreoutput[team_name][problemcount+1] == maxresponses)
+    if (scoreoutput[team_name][problemcount+1] == 25)
     {
       continue;
     }
@@ -138,5 +137,13 @@ function putInContact(info) {
   range.setValues(output);
   range = scoreSheet.getRange(2, 1, numteams, 1);
   range.setValues(teamsoutput);
-
+  range = scoreSheet.getRange(1, 2, 1, problemcount+2);
+  var titles = [[]];
+  for (var i=1; i<=problemcount; i++)
+  {
+    titles[0].push(i);
+  }
+  titles[0].push(["Score"]); titles[0].push(["Submissions"]);
+  range.setValues(titles);
+  scoreSheet.setColumnWidths(2,2+problemcount, 50);
 }
