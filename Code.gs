@@ -1,6 +1,7 @@
 var teamnames = ["3 idiots", "pie", "lemon", "Genshin Is better than arknights", "Team EEK", "Me, Myself, and I", "You're a math wizard Harry", "Underestimated", "zam s fanclub", "L", "W"];
 var answers = [0, 8.87e13, 30552, 8877600, 4.31e10, 29650, 900000, 26055460, 18450000000, 4580000, 171476, 312000, 9.2e10, 29.046, 46000000000, 264000000]
 var sorthelper = [];
+var numresponses = 25;
 var output = [];
 var numteams = teamnames.length;
 
@@ -43,12 +44,12 @@ function putInContact(info) {
     {
       continue;
     }
-    var problem = row[1];
-    var lower_bound = row[2];
-    var upper_bound = row[3];
-    var team_name = row[4];
+    var problem = row[2];
+    var lower_bound = row[3];
+    var upper_bound = row[4];
+    var team_name = row[1];
 
-    if (scoreoutput[team_name][problemcount+1] == 25)
+    if (scoreoutput[team_name][problemcount+1] == numresponses)
     {
       continue;
     }
@@ -86,7 +87,7 @@ function putInContact(info) {
         sum += (scoreoutput[team][i]);
       }
     }
-    scoreoutput[team][problemcount] = sum * (1 << (15-numcorrect));
+    scoreoutput[team][problemcount] = sum * (1 << (problemcount-numcorrect));
     //Logger.log(team);
     //Logger.log(arr);
     sorthelper.push([team, scoreoutput[team][problemcount]]);
