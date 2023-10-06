@@ -1,7 +1,6 @@
-var teamnames = ["3 idiots", "pie", "lemon", "Genshin Is better than arknights", "Team EEK", "Me, Myself, and I", "You're a math wizard Harry", "Underestimated", "zam s fanclub", "L", "W"];
-var answers = [0, 8.87e13, 30552, 8877600, 4.31e10, 29650, 900000, 26055460, 18450000000, 4580000, 171476, 312000, 9.2e10, 29.046, 46000000000, 264000000]
+var teamnames = ["Team 1", "Team 2"];
+var answers = [0, 5, 42]
 var sorthelper = [];
-var numresponses = 25;
 var output = [];
 var numteams = teamnames.length;
 
@@ -17,16 +16,19 @@ function putInContact(info) {
   var responses = responsesSheet.getDataRange().getValues();
   //Logger.log(responses);
   /*
-  we should have a dictionary of arrays each array's key is the team name, and the array is 17 elements which are the next 17 cells: their current answers to the first 15 questions, their score, then their submission count
+  we should have a dictionary of arrays each array's key is the team name, and the array is 17 elements which are the next 17 cells: their current answers to the first numproblems questions, their score, then their submission count
   */
   var problemcount=answers.length-1;
   var scoreoutput = {};
+  var bads = {}; 
   for (const team of teamnames)
   {
     scoreoutput[team] = [];
+    bads[team] = [];
     for (var i =0; i<problemcount+2; i++)
     {
       scoreoutput[team].push();
+      bads[team].push("")
     }
     scoreoutput[team][problemcount+1] = 0;
   }
@@ -48,15 +50,14 @@ function putInContact(info) {
     var lower_bound = row[3];
     var upper_bound = row[4];
     var team_name = row[1];
-
-    if (scoreoutput[team_name][problemcount+1] == numresponses)
+    if (scoreoutput[team_name][problemcount+1] == 18)
     {
       continue;
     }
     if (lower_bound <= 0.00001 || upper_bound < lower_bound - 0.00001)
     {
       scoreoutput[team_name][problem-1] = "bad";
-      continue;
+      bads[team_name][problem-1] += "X";
     }
 
     scoreoutput[team_name][problemcount+1]++;
@@ -68,20 +69,25 @@ function putInContact(info) {
     else
     {
       scoreoutput[team_name][problem-1] = "bad";
+      bads[team_name][problem-1] += "X";
+    }
+    if (scoreoutput[team_name][problem-1] == "bad")
+    {
+      scoreoutput[team_name][problem-1] = bads[team_name][problem-1]; 
     }
   }
   
   /*
-  calculate the scores of each team using the formula (100 + ratios) * 2^(15-correct)
+  calculate the scores of each team using the formula (100 + ratios) * 2^(numproblems-correct)
   */
 
   for (const [team, arr] of Object.entries(scoreoutput))
   {
-    var sum = 100.0;
+    var sum = 10.00;
     var numcorrect = 0;
     for (var i =0; i<problemcount; i++)
     {
-      if (scoreoutput[team][i] != null && scoreoutput[team][i] != "bad")
+      if (scoreoutput[team][i] != null && typeof(scoreoutput[team][i]) == "number")
       {
         numcorrect++;
         sum += (scoreoutput[team][i]);
@@ -122,9 +128,9 @@ function putInContact(info) {
     output.push(scoreoutput[element[0]]);
     for (var j =0; j<scoreoutput[element[0]].length; j++)
     {
-      if (scoreoutput[element[0]][j] == "bad")
+      if (typeof(scoreoutput[element[0]][j]) != "number" && scoreoutput[element[0]][j] != null)
       {
-        scoreSheet.getRange(2+i, 2+j, 1, 1).setBackground("red");
+        scoreSheet.getRange(2+i, 2+j, 1, 1).setBackground("#ffcccb");
       }
       else
       {
