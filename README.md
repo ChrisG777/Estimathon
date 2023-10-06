@@ -14,7 +14,7 @@ The Estimathon round is a series of estimation questions with a twist: teams get
 Teams will submit their answers on a Google Form for each problem, where they will input a lower bound and an upper bound, making a range that they think the answer is in. If their range contains the correct answer, the scoreboard will update with their score (the ratio of the upper bound to the lower bound) for that question. If it doesn’t, the scoreboard will update with “bad.” You can submit up to 25 times, meaning you can submit multiple times for a single problem. 
 
 Here is an example of what the scoreboard looks like: 
-![Sample Estimathon Scoreboard](https://i.ibb.co/PwpQ9zP/Estimathon-Scoreboard.png)
+![Sample Estimathon Scoreboard](https://i.ibb.co/PrJWKfM/Screenshot-2023-10-05-at-8-52-01-PM.png)
 
 
 ## Now, here are the steps you need to follow to successfully create your own estimathon leaderboard.
